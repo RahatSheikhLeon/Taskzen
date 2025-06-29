@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
+  margin         : 0;
+  padding        : 0;
+  list-style     : none;
+  text-decoration: none;
+  box-sizing     : border-box;
+}
+
+body {
+  background-color: #b0aaaa;
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  color      : #000000;
+}
+
+span,
+a,
+label,
+li {
+  display: inline-block;
+}
+
+span,
+a,
+li,
+p,
+label {
+  font-family  : "Rubik", sans-serif;
+  font-weight  : 400;
+  color        : #302e2e;
+  margin-bottom: 6px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.container {
+  max-width  : 1200px;
+  margin : 0 auto;
+}
+
+.border{
+  border       : 1px solid #A1A3AB;
+
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-50{
+  width: 50%;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.text-color-light {
+  color: white;
+}
+
+.text-color-dark {
+  color: #000000;
+}
+
+.text-color-red {
+  color: #FF6767;
+}
+
+.btn-1 {
+  width           : 100%;
+  padding         : 10px;
+  border          : none;
+  background-color: #FF6767;
+  color           : white;
+  border-radius   : 6px;
+  cursor          : pointer;
+  margin-bottom   : 12px;
+}
+
+.add-task-btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.hilight {
+  color: blue;
+}
+
+.padding-12 {
+  padding: 12px;
+}
+.margin-bottom-12 {
+  margin-bottom: 12px;
+}
+
+.margin-0 {
+  margin: 0px;
+}
+
+.box-shadow {
+  box-shadow      : 10px 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.forget-btn {
+  font-size : 12px;
+  text-align: right;
+  width     : 100%;
+}
+
+.login-wrapper,
+.signup-wrapper {
+  width           : 100%;
+  height          : 100vh;
+  background-color: #FF6767;
+  display         : flex;
+  justify-content : center;
+  align-items     : center;
+}
+
+.login-wrapper .login-content,
+.signup-wrapper .signup-content {
+  background-color: white;
+  max-width       : 300px;
+  width           : 100%;
+  height          : 450px;
+  margin          : 0 auto;
+  border-radius   : 8px;
+  border          : 1px solid #A1A3AB;
+  box-shadow      : 10px 10px 10px rgba(0, 0, 0, 0.1);
+  padding         : 12px;
+}
+
+.main-header {
+  font-size    : 29px;
+  margin-bottom: 24px;
+}
+
+.sec-header {
+  font-size    : 20px;
+  margin-bottom: 12px;
+}
+
+.error-text {
+  color    : red;
+  font-size: 10px;
+  margin   : 0px;
+}
+
+.logo {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  gap            : 3px;
+  padding        : 5px;
+}
+
+.logo .logo-text {
+  color      : #000000;
+  font-weight: 400;
+
+}
+
+.logo .icon {
+  width : 25px;
+  height: 25px;
+}
+
+.logo .icon img {
+  width     : 100%;
+  height    : 100%;
+  object-fit: cover;
+}
+
+.text-algin-center {
+  text-align: center;
+}
+
+.form-control {
+  border-radius: 6px;
+  border       : 1px solid #A1A3AB;
+  box-shadow   : 5px 5px 5px rgba(0, 0, 0, 0.1);
+  width        : 100%;
+  padding      : 8px;
+}
+
+.pie-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 12px;
+  flex-direction: column;
+}
+
+.pie {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: conic-gradient(
+    green calc(var(--percent) * 3.6deg),
+    #f1f1f1 0deg
+  );
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pie.incompleted {
+   background: conic-gradient(
+    blue calc(var(--percent) * 3.6deg),
+    #f1f1f1 0deg
+  );
+}
+
+.pie.totaltask {
+   background: conic-gradient(
+    #FF6767 calc(var(--percent) * 3.6deg),
+    #f1f1f1 0deg
+  );
+}
+
+.pie::before {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background: white;
+  border-radius: 50%;
+}
+
+.pie-value {
+  position: relative;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  z-index: 1;
+}
