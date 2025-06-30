@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { findId } from './utilities'
 export function Taskcategorices() {
     const [category, setcategory] = useState({
         categoryid: Date.now(),
@@ -15,11 +15,16 @@ export function Taskcategorices() {
     };
 
     const handleSubmit = () => {
-        console.log(category);
+        console.log('test:', category);
 
+        const activeUser = JSON.parse(localStorage.getItem('loggedInUser')) || null
+        const activeUserId = activeUser.id
+        const currentUser = findId().find(user => user == activeUserId)
+
+        currentUser.push(category)
         // Reset input field
         setcategory({
-            categoryid: Date.now(), // regenerate ID if needed
+            categoryid: Date.now(),
             categoryName: ''
         });
     };

@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { loginValidation } from "./loginValidation";
 import logo from './assets/icon.png';
 import { findLoginUser } from "./utilities";
 
 export function Login() {
-
+const afterLoginEff = useNavigate()
     const [loginData, setLoginData] = useState({
         email: '',
         password: ''
@@ -26,7 +26,7 @@ export function Login() {
         const { success, user, error } = findLoginUser(loginData);
 
         if (success) {
-            console.log('test')
+            afterLoginEff('/')
             localStorage.setItem("loggedInUser", JSON.stringify(user));
         } else {
             setLoginError(error);

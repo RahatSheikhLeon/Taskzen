@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { SignupValidation } from "./SignupValidation";
 import logo from './assets/icon.png';
 import { setUser } from "./utilities";
 
+
 export function Signup() {
+    const navigate = useNavigate();
     const [signupData, setSignupData] = useState({
         username: '',
         email: '',
@@ -35,6 +37,8 @@ export function Signup() {
                 password: '',
                 id: Date.now()
             });
+
+            navigate('/login')
         }
     }
 

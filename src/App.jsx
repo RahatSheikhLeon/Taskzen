@@ -58,12 +58,20 @@ const router = createBrowserRouter([
             path: '/logout',
             element: <Logout />
           },
+
+          {
+            path: "*",
+            element: <p>404 not found</p>
+          }
+
         ]
       },
 
 
+
     ]
-  }
+  },
+
 ])
 
 
