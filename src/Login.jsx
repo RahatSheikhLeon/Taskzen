@@ -2,6 +2,8 @@ import { Link } from "react-router-dom"
 import { useState } from "react"
 import { loginValidation } from "./loginValidation";
 import logo from './assets/icon.png';
+import { findLoginUser } from "./utilities";
+
 export function Login() {
 
     const [loginData, setLoginData] = useState({
@@ -20,8 +22,17 @@ export function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setLoginError(loginValidation(loginData));
-    }
 
+        const { success, user, error } = findLoginUser(loginData);
+
+        if (success) {
+            console.log('test')
+            localStorage.setItem("loggedInUser", JSON.stringify(user));
+        } else {
+            setLoginError(error);
+            alert('You are not a member plase sinup')
+        }
+    }
 
     return (
         <>
@@ -41,7 +52,7 @@ export function Login() {
                         <div className="margin-bottom-12">
                             <label htmlFor="password">Password:</label>
                             <input type="password" id="password" name="password" required className="form-control" onChange={handleChange} />
-                             {loginError.password && <span className="error-text">{loginError.password}</span>}
+                            {loginError.password && <span className="error-text">{loginError.password}</span>}
                         </div>
                         <button className="btn-1" type="submit" onClick={handleSubmit}>Login</button>
                     </form>

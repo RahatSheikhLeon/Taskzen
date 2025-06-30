@@ -2,17 +2,14 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { SignupValidation } from "./SignupValidation";
 import logo from './assets/icon.png';
-import React from 'react';
-import { Store } from './Store';
-
+import { setUser } from "./utilities";
 
 export function Signup() {
-
     const [signupData, setSignupData] = useState({
         username: '',
         email: '',
         password: '',
-        unicid: Date.now()
+        id: Date.now()
     })
     const [singupError, setSignupError] = useState({});
     const handleChange = (e) => {
@@ -21,18 +18,26 @@ export function Signup() {
             ...prevData,
             [name]: value
         }));
+
     }
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setSignupError(SignupValidation(signupData));
-        if (username.length && email.length && password.length === 0 && SignupValidation.error) {
-            return;
-        } else {
-            Store(signupData);
-        }
+        const { error, storageRootValidation } = SignupValidation(signupData);
+        setSignupError(error);
+        if (storageRootValidation) {
+            setUser(signupData);
 
+            setSignupData({
+                username: '',
+                email: '',
+                password: '',
+                id: Date.now()
+            });
+        }
     }
+
 
 
     return (
@@ -47,18 +52,18 @@ export function Signup() {
                     <form>
                         <div className="margin-bottom-12">
                             <label htmlFor="username">Username:</label>
-                            <input type="text" id="username" name="username" className="form-control" onChange={handleChange} required />
+                            <input type="text" id="username" name="username"  value={signupData.username} className="form-control" onChange={handleChange} required />
                             {singupError.username && <span className="error-text">{singupError.username}</span>}
                         </div>
                         <div className="margin-bottom-12">
                             <label htmlFor="email">Email:</label>
-                            <input type="email" id="email" name="email" required className="form-control" onChange={handleChange} />
+                            <input type="email" id="email" name="email" required  value={signupData.email} className="form-control" onChange={handleChange} />
                             {singupError.email && <span className="error-text">{singupError.email}</span>}
 
                         </div>
                         <div className="margin-bottom-12">
                             <label htmlFor="password">Password:</label>
-                            <input type="password" id="password" name="password" className="form-control" required onChange={handleChange} />
+                            <input type="password" id="password" name="password"  value={signupData.password} className="form-control" required onChange={handleChange} />
                             {singupError.password && <span className="error-text">{singupError.password}</span>}
 
                         </div>
