@@ -15,7 +15,10 @@ export const findLoginUser = (loginData) => {
     }
 }
 
-export const findId = () => {
-    const allIds = existingUsers.map(user => user.id);
-    return allIds;
+export const updateUser = (category) => {
+        const user = JSON.parse(localStorage.getItem('loggedInUser'))
+        const upaderUser = user.categories.push(category)
+        console.log(user.categories)
+        localStorage.setItem('loggedInUser', JSON.stringify(upaderUser))
+        console.log('category', category)
 }

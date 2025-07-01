@@ -11,7 +11,8 @@ export function Signup() {
         username: '',
         email: '',
         password: '',
-        id: Date.now()
+        id: Date.now(),
+        categories: []
     })
     const [singupError, setSignupError] = useState({});
     const handleChange = (e) => {
