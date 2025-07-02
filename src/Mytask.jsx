@@ -1,6 +1,10 @@
 import { useNavigate } from "react-router-dom"
+import { getCategories, getLoggedInUser } from "./utilities"
+
 export function Mytask({ setDaynamicCategoriId }) {
-    const taskCategorices = JSON.parse(localStorage.getItem('categorys'))
+    const loggedInUser = getLoggedInUser()
+
+    const taskCategorices = getCategories( loggedInUser.id )
     const navigate = useNavigate()
     const selectCategory = (categoryId) => {
         setDaynamicCategoriId(categoryId)

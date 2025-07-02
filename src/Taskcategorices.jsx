@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { setCategorices } from './utilities'
+import { getLoggedInUser, setCategorices } from './utilities'
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,9 +12,12 @@ export function Taskcategorices() {
 
     const handleChange = (e) => {
         const { value } = e.target;
+        const loggedInUser = getLoggedInUser()
+
         setcategory(prevValue => ({
             ...prevValue,
-            categoryName: value
+            categoryName: value,
+            userId: loggedInUser.id
         }));
     };
 

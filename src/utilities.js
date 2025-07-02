@@ -20,3 +20,17 @@ export const setCategorices = (category) => {
     existingCategory.push(category)
     localStorage.setItem('categorys', JSON.stringify(existingCategory))
 }
+
+export const getCategories = ( userId = null ) => {
+    let categories = JSON.parse(localStorage.getItem('categorys')) ?? [];
+
+    if( userId === null ) {
+        return categories;
+    }
+
+    return categories.filter( category => category.userId === userId );
+}
+
+export const getLoggedInUser = () => {
+    return JSON.parse(localStorage.getItem('loggedInUser')) ?? {};
+}
