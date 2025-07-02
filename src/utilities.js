@@ -7,7 +7,7 @@ export const setUser = (signupData) => {
 
 export const findLoginUser = (loginData) => {
     const matchedUser = existingUsers.find((user) => user.email == loginData.email && user.password == loginData.password)
-    console.log('matchedUser : ', matchedUser)
+
     if (matchedUser) {
         return { success: true, user: matchedUser };
     } else {
@@ -15,10 +15,8 @@ export const findLoginUser = (loginData) => {
     }
 }
 
-export const updateUser = (category) => {
-        const user = JSON.parse(localStorage.getItem('loggedInUser'))
-        const upaderUser = user.categories.push(category)
-        console.log(user.categories)
-        localStorage.setItem('loggedInUser', JSON.stringify(upaderUser))
-        console.log('category', category)
+export const setCategorices = (category) => {
+    const existingCategory = JSON.parse(localStorage.getItem('categorys')) || []
+    existingCategory.push(category)
+    localStorage.setItem('categorys', JSON.stringify(existingCategory))
 }

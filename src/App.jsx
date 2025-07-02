@@ -9,11 +9,16 @@ import { Settings } from './Settings'
 import { Help } from './Help'
 import { Mytask } from './Mytask'
 import { Logout } from './Logout'
-
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { Addtask } from './Addtask'
 import { Layout } from './Layout'
 
+import { useState } from 'react'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+
+function App() {
+
+const [daynamicCategoriId, setDaynamicCategoriId] = useState('')
 const router = createBrowserRouter([
   {
     path: '/',
@@ -39,7 +44,7 @@ const router = createBrowserRouter([
           },
           {
             path: '/my-task',
-            element: <Mytask />
+            element: <Mytask setDaynamicCategoriId ={setDaynamicCategoriId}/>
           },
           {
             path: '/task-categories',
@@ -60,6 +65,11 @@ const router = createBrowserRouter([
           },
 
           {
+            path: `/my-task/${daynamicCategoriId}/add-task`,
+            element: <Addtask />
+          },
+
+          {
             path: "*",
             element: <p>404 not found</p>
           }
@@ -74,8 +84,6 @@ const router = createBrowserRouter([
 
 ])
 
-
-function App() {
 
   return (<RouterProvider router={router} />)
 }

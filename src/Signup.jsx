@@ -3,6 +3,7 @@ import { useState } from "react";
 import { SignupValidation } from "./SignupValidation";
 import logo from './assets/icon.png';
 import { setUser } from "./utilities";
+import { v4 as uuidv4 } from 'uuid';
 
 
 export function Signup() {
@@ -11,8 +12,7 @@ export function Signup() {
         username: '',
         email: '',
         password: '',
-        id: Date.now(),
-        categories: []
+        id: uuidv4(),
     })
     const [singupError, setSignupError] = useState({});
     const handleChange = (e) => {

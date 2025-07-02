@@ -63,7 +63,11 @@ img {
 }
 
 .col-50{
-  width: 50%;
+  width: 48%;
+}
+
+.gap-24{
+  gap: 24px;
 }
 
 .justify-content-center {

@@ -1,8 +1,12 @@
 import { useState } from 'react';
-import { updateUser } from './utilities'
+import { setCategorices } from './utilities'
+import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
+
 export function Taskcategorices() {
+    const navigate = useNavigate()
     const [category, setcategory] = useState({
-        categoryid: Date.now(),
+        categoryid: uuidv4(),
         categoryName: ''
     });
 
@@ -15,10 +19,16 @@ export function Taskcategorices() {
     };
 
     const handleSubmit = () => {
-        updateUser(category)
+        if(category.categoryName === ''){
+            alert("Enter your category type")
+            return;
+        }
 
+        setCategorices(category)
+        navigate('/my-task')
+        
         setcategory({
-            categoryid: Date.now(),
+            categoryid: uuidv4(),
             categoryName: ''
         });
     };
@@ -35,10 +45,7 @@ export function Taskcategorices() {
                     className="form-control margin-bottom-12"
                 />
 
-                <button
-                    className="btn-1 margin-0 flex align-items-center justify-content-center"
-                    onClick={handleSubmit}
-                >
+                <button className="btn-1 margin-0 flex align-items-center justify-content-center" onClick={handleSubmit}>
                     Create
                 </button>
             </div>

@@ -1,9 +1,27 @@
-export function Mytask() {
+import { useNavigate } from "react-router-dom"
+export function Mytask({ setDaynamicCategoriId }) {
+    const taskCategorices = JSON.parse(localStorage.getItem('categorys'))
+    const navigate = useNavigate()
+    const selectCategory = (categoryId) => {
+        setDaynamicCategoriId(categoryId)
+        navigate(`/my-task/${categoryId}/add-task`)
+    }
     return (
-        <div className="my-task">
-            <h1 className="text-color-light">My Task</h1>
-            <p className="text-color-light">This is the My Task page.</p>
-            <p className="text-color-light">You can manage your tasks here.</p>
-        </div>
+        <>
+
+            <div className="box-shadow section-wrapper">
+                <div className="flex">
+                    {taskCategorices.map((item, index) => (
+                        <div key={index} className="category-content" onClick={() => selectCategory(item.categoryid)}>
+                            <h4>{item.categoryName}</h4>
+                        </div>
+                    ))}
+                </div>
+
+            </div>
+
+
+        </>
+
     )
 }

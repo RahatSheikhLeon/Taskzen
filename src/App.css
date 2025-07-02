@@ -121,3 +121,21 @@
 .task-card-wrapper:last-child {
     margin-bottom: 0;
 }
+
+.category-content{
+    padding: 12px;
+    margin: 12px;
+    width: calc(50% - 24px);
+    border: 1px solid #A1A3AB;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.go-back-btn{
+    border: none;
+    background-color:transparent;
+    cursor: pointer;
+}
+.description{
+    height: 150px;
+}
