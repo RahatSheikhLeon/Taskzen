@@ -15,6 +15,12 @@ export const findLoginUser = (loginData) => {
     }
 }
 
-export const setCategorices = () => {
+export const setCategorices = (category)  => {
+    const existingCategorices = JSON.parse(localStorage.getItem('categorys'))
+    existingCategorices.push(category)
+    localStorage.setItem('categorys', JSON.stringify(existingCategorices))
+}
+
+export const loggedInUser = () => {
     return JSON.parse(localStorage.getItem('loggedInUser')) || []
 }

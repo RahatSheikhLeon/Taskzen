@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { user } from './utilities'
+import { loggedInUser } from './utilities'
+import { setCategorices } from "./utilities";
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,8 +15,8 @@ export function Taskcategorices() {
         const { value } = e.target;
         setcategory(prevValue => ({
             ...prevValue,
-            categoryName: value
-            userId : user
+            categoryName: value, 
+            userId: loggedInUser.id,
         }));
     };
 
