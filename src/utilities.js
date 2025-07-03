@@ -15,8 +15,6 @@ export const findLoginUser = (loginData) => {
     }
 }
 
-export const setCategorices = (category) => {
-    const existingCategory = JSON.parse(localStorage.getItem('categorys')) || []
-    existingCategory.push(category)
-    localStorage.setItem('categorys', JSON.stringify(existingCategory))
+export const setCategorices = () => {
+    return JSON.parse(localStorage.getItem('loggedInUser')) || []
 }
